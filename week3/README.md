@@ -52,4 +52,3 @@ git commit -m "Initial commit: fullstack blog scaffold"
 # create repo on GitHub and push
 git remote add origin <your-repo-url>
 git push -u origin main
-```
