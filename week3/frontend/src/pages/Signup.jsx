@@ -9,11 +9,16 @@ export default function Signup() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
+  const API_BASE_URL = 'http://localhost:5000/api'
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('https://webthism-1.onrender.com/api/auth/signup', form)
+      const res = await axios.post(`${API_BASE_URL}/auth/signup`, form)
       localStorage.setItem('token', res.data.token)
+      if (res.data.user) {
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+      }
       navigate('/')
     } catch (err) {
       setError(err.response?.data?.error || 'Signup failed')

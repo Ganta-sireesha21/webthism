@@ -43,6 +43,15 @@ const signup = async (req, res) => {
     return res.status(201).json({ user: { id: data.id, name: data.name, email: data.email }, token });
   } catch (err) {
     console.error(err);
+    const msg = (err && err.message) || '';
+    // Helpful hint if users table is missing
+    if (msg.includes("Could not find the table") || msg.toLowerCase().includes('relation "users"') || msg.toLowerCase().includes('table \"users\"')) {
+      return res.status(500).json({
+        error: "Database table 'users' not found. Please create the users table in Supabase.",
+        hint: "Run the SQL in backend/sql/create_users.sql or see SUPABASE_SETUP.md"
+      });
+    }
+
     return res.status(500).json({ error: err.message || 'Server error' });
   }
 };
