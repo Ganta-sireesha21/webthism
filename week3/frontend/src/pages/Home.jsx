@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PostCard from '../components/PostCard';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://webthism-1.onrender.com/api';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
