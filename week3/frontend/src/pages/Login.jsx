@@ -12,7 +12,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const API_BASE_URL = 'http://localhost:5000/api'
+      const API_BASE_URL = 'https://webthism-1.onrender.com/api'
       const res = await axios.post(`${API_BASE_URL}/auth/login`, form)
       localStorage.setItem('token', res.data.token)
       if (res.data.user) {
