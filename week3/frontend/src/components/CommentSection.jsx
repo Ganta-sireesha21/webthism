@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://webthism-1.onrender.com/api';
 
 export default function CommentSection({ postId, comments: initialComments, onCommentAdded }) {
   const [comments, setComments] = useState(initialComments || []);
